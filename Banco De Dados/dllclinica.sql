@@ -33,20 +33,27 @@ CREATE TABLE clinica.clinica(
 );
 
 CREATE TABLE clinica.consulta (
-	id_consulta PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
+	id_consulta INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
 	data TIMESTAMPTZ NOT NULL,
 	valor NUMERIC (10, 4),
 
 	-- Maneira Extensa
-	
+	/*
 	id_medico INT NOT NULL,
 	FOREIGN KEY (id_medico) REFERENCES clinica.medico(id_medico),
-	
+	*/
 
 	--Maneira Abreviada
 	id_clinica INT NOT NULL REFERENCES clinica.clinica(id_clinica),
 	id_paciente INT NOT NULL REFERENCES clinica.paciente(id_paciente)
 );
+
+
+
+--TRUNCATE - Limpa a Tabela
+--TRUNCATE TABLE clinica.consulta;
+-- RESTART IDENTITY;
+-- RESTART IDENTITY - Reinicia a Sequencia
 
 -- Apagar Tabela - DROP
 /*
