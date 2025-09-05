@@ -48,3 +48,7 @@ WHERE FROM = 'Vinicio';
 /*
 WHERE FROM = id_medico =1;
 */
+
+SELECT * FROM clinica.consulta
+--WHERE valor = 150,
+--Order By - Coloca em Ordem Crescente
