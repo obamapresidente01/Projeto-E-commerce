@@ -63,6 +63,7 @@ GET - Pegar
 POST - (Cadastrar algo)
 PUT - Colocar
 DELETE - Deletar
+Read - Ler
 
 formato.json
 endpoints
