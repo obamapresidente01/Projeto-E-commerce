@@ -3,9 +3,7 @@ package br.com.ecommerce.API.controller;
 import br.com.ecommerce.API.model.Itempedido;
 import br.com.ecommerce.API.service.ItemPedidoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,8 +13,11 @@ import java.util.List;
 public class ItemPedidoController {
 
     private final ItemPedidoService itempedidoService;
-    public ItemPedidoController(ItemPedidoService service) {
+    private final ItemPedidoService itemPedidoService;
+
+    public ItemPedidoController(ItemPedidoService service, ItemPedidoService itemPedidoService) {
         this.itempedidoService = service;
+        this.itemPedidoService = itemPedidoService;
     }
 
     @GetMapping
@@ -25,5 +26,13 @@ public class ItemPedidoController {
         List<Itempedido> itempedidos = itempedidoService.ListarTodos();
 
         return ResponseEntity.ok(itempedidos);
+    }
+
+    @PostMapping
+    public ResponseEntity<Itempedido> adicionarItempedido(
+            @RequestBody Itempedido itempedido
+    ) {
+        itemPedidoService.adicionarItempedido(itempedido);
+        return ResponseEntity.ok(itempedido);
     }
 }

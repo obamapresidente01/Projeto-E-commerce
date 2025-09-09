@@ -17,4 +17,8 @@ public class ItemPedidoService {
     public List<Itempedido> ListarTodos(){
         return itemPedidoRepository.findAll();
     }
+
+    public Itempedido adicionarItempedido(Itempedido itempe){
+        return itemPedidoRepository.save(itempe);
+    }
 }
