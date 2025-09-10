@@ -28,4 +28,21 @@ public class ClienteService {
         return clienteRepository.save(cl);
 
     }
+
+    public Cliente buscarPorId(Integer id) {
+        return clienteRepository.findById(id).orElse(null);
+    }
+
+    public Cliente deletarCliente(Integer id){
+        // 1. Verifico se o Cliente existe
+        Cliente cliente = buscarPorId(id);
+
+        //2. Se nao existe, retorno erro
+        if (cliente == null) {
+            return null;
+        }
+        //3. Se existir, exclua
+        clienteRepository.delete(cliente);
+        return cliente;
+    }
 }

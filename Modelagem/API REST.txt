@@ -67,3 +67,14 @@ Read - Ler
 
 formato.json
 endpoints
+
+pagamento so precisa do id e pedido e tirar o primeiro id 
+
+-- buscar
+-- excluir
+
+posso receber informacoes:
+-> pelo corpo
+-> pelo link (cabecalho)
+
+usar o pathvariable
