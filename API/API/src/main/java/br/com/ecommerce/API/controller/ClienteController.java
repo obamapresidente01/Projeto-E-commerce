@@ -2,6 +2,8 @@ package br.com.ecommerce.API.controller;
 
 import br.com.ecommerce.API.model.Cliente;
 import br.com.ecommerce.API.service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
+@Tag(name = "Clientes", description = "Metodos de Clientes")
 public class ClienteController {
 
     private final ClienteService clienteService;
@@ -19,6 +22,9 @@ public class ClienteController {
     }
 
     @GetMapping
+    @Operation(
+            summary = "Lista todos os clientes"
+    )
     public ResponseEntity<List<Cliente>> listarClientes() {
 
         List<Cliente> clientes = clienteService.ListarTodos();
@@ -65,7 +71,7 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity <?> deletarCliente (@PathVariable Integer id) {
         // 1. Verificar se o cliente existe
         Cliente cliente = clienteService.deletarCliente(id);

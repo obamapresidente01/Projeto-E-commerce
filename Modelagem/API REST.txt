@@ -78,3 +78,9 @@ posso receber informacoes:
 -> pelo link (cabecalho)
 
 usar o pathvariable
+
+Passo a Passo de como fazer o CRUD: (CREATE READ UPDATE DELETE)
+1- Criar a model
+2- Criar o repository
+3- Criar o service
+4- Criar o controller

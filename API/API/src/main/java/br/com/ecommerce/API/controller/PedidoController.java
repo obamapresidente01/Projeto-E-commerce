@@ -3,6 +3,7 @@ package br.com.ecommerce.API.controller;
 import br.com.ecommerce.API.model.Pedido;
 import br.com.ecommerce.API.service.ClienteService;
 import br.com.ecommerce.API.service.PedidoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,16 @@ public class PedidoController {
             @RequestBody Pedido pedido
     ){
         pedidoService.fazerPedido(pedido);
+        return ResponseEntity.ok(pedido);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> excluirPedido(@PathVariable Integer id){
+        Pedido pedido = pedidoService.excluirPedido(id);
+
+        if (pedido == null) {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
         return ResponseEntity.ok(pedido);
     }
 }
